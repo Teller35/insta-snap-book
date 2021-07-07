@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Teller35/insta-snap-book#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "luxon": "^1.27.0",
     "mongoose": "^5.13.2"
   }
 }

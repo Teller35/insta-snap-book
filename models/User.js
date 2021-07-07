@@ -15,13 +15,23 @@ const UserSchema = new Schema(
       required: "Email is required!",
       match: [/.+@.+\..+/, "Please enter a valid email!"],
     },
+
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+    ],
+
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
+
   }
-  // {
-  //     toJSON: {
-  //         virtuals: true
-  //     },
-  //     id: true
-  // }
+  
 );
 
 const User = model("User", UserSchema);
