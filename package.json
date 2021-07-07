@@ -1,0 +1,24 @@
+{
+  "name": "insta-snap-book",
+  "version": "1.0.0",
+  "description": "My version of a soical network",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teller35/insta-snap-book.git"
+  },
+  "author": "Teller Wetzel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Teller35/insta-snap-book/issues"
+  },
+  "homepage": "https://github.com/Teller35/insta-snap-book#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2"
+  }
+}
