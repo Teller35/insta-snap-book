@@ -1,6 +1,38 @@
-const { Schema, model } = require("mongoose");
-const ReactionSchema = require("./Reaction");
+const { Schema, model, Types } = require("mongoose");
 const dateFormat = require('../utils/format');
+
+const ReactionSchema = new Schema({
+  reactionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId()
+  },
+
+  reactionBody: {
+    type: String,
+    required: true,
+    max: [280, "Over achiever reaction needs to be smaller!"],
+  },
+
+  username: [
+    {
+      type: String,
+      required: true,
+      ref: "User",
+    },
+  ],
+
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    // get: (createdAtVal) => dateFormat(createdAtVal),
+  },
+},
+{
+  toJSON: {
+    getters: true
+  }
+}
+);
 
 const ThoughtSchema = new Schema(
   {
@@ -14,7 +46,7 @@ const ThoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
+      // get: (createdAtVal) => dateFormat(createdAtVal),
     },
 
     username: [
@@ -25,7 +57,14 @@ const ThoughtSchema = new Schema(
       },
     ],
 
-    thoughts: [ReactionSchema],
+    reactions: [ReactionSchema],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true
+    },
+    id: false,
   }
 );
 
