@@ -1,6 +1,25 @@
 const { Thought, User } = require('../models');
 
 const thoughtController = {
+
+    allThought(req, res) {
+        Thought.find({})
+        .then(dbThoughtData => res.json(dbThoughtData))
+        .catch(err => res.json(err))
+    },
+
+    oneThought({ params }, res) {
+        Thought.findOne({ _id: params.id })
+        .select('-__v')
+        .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'No thought found with this id!' });
+                return;
+            }
+            res.json(dbThoughtData);
+        })
+        .catch(err => res.json(err))
+    },
     
     addThought({ params, body }, res) {
         Thought.create(body)
