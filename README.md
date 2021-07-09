@@ -6,7 +6,7 @@
 
 #### _This is my version of a social network with just the back end functionality._
 
-- _[View Project on GitHub](https://github.com/Teller35/inst-snap-book)_
+- _[View Project on GitHub](https://github.com/Teller35/insta-snap-book)_
 - _[View Project Walk Though Video]()_
 
 ## Table of Contents:
