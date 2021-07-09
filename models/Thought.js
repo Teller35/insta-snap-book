@@ -1,37 +1,39 @@
 const { Schema, model, Types } = require("mongoose");
-const format = require('../utils/format');
+const format = require("../utils/format");
 
-const ReactionSchema = new Schema({
-  reactionId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId()
-  },
+const ReactionSchema = new Schema(
+  {
+    // Create a reactionId to target
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
 
-  reactionBody: {
-    type: String,
-    required: true,
-    max: [280, "Over achiever reaction needs to be smaller!"],
-  },
-
-  username: [
-    {
+    reactionBody: {
       type: String,
       required: true,
-      ref: "User",
+      max: [280, "Over achiever reaction needs to be smaller!"],
     },
-  ],
 
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (createdAt) => format(createdAt),
+    username: [
+      {
+        type: String,
+        required: true,
+        ref: "User",
+      },
+    ],
+    // Formatted timestamp
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (createdAt) => format(createdAt),
+    },
   },
-},
-{
-  toJSON: {
-    getters: true
+  {
+    toJSON: {
+      getters: true,
+    },
   }
-}
 );
 
 const ThoughtSchema = new Schema(
@@ -62,15 +64,15 @@ const ThoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      getters: true
+      getters: true,
     },
     id: false,
   }
 );
-
-ThoughtSchema.virtual('reactionCount').get(function () {
+// Counter to show how many reactions a thought has
+ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
-})
+});
 
 const Thought = model("Thought", ThoughtSchema);
 

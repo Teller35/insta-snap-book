@@ -9,12 +9,15 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static('public'));
 app.use(require("./routes"));
 
-// mongoose function
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/insta_snap_book", {
-  useFindAndModify: false,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose function to make my database and connect to it
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/insta_snap_book",
+  {
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 // Use this to log mongo queries being executed!
 mongoose.set("debug", true);
 
