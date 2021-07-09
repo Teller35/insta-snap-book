@@ -46,6 +46,7 @@ const thoughtController = {
             { $push: { reactions: body } },
             { new: true, runValidators: true }
         )
+        .select('-__v')
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id!' });
