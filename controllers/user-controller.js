@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 const userController = {
     getAllUser(req, res) {
@@ -62,6 +62,7 @@ const userController = {
             { $push: { friends: body } },
             { new: true, runValidators: true }
         )
+        .select('-__v')
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id!' });
