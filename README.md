@@ -6,7 +6,8 @@
 
 #### _This is my version of a social network with just the back end functionality._
 
-_[View Project on GitHub](https://github.com/Teller35/inst-snap-book)_
+- _[View Project on GitHub](https://github.com/Teller35/inst-snap-book)_
+- _[View Project Walk Though Video]()_
 
 ## Table of Contents:
 
@@ -52,3 +53,12 @@ _[View Project on GitHub](https://github.com/Teller35/inst-snap-book)_
 - #### _Built with ❤️ by Teller Wetzel_
 
 ## Screenshots
+
+- #### _User Created_
+  ![image](https://user-images.githubusercontent.com/79383305/125133530-39544280-e0c3-11eb-8a31-3ad38c3a1921.png)
+- #### _Friend Added To User_
+  ![image](https://user-images.githubusercontent.com/79383305/125133849-b67fb780-e0c3-11eb-824a-d8a5fd654c2c.png)
+- #### _Though Added To User_
+  ![image](https://user-images.githubusercontent.com/79383305/125134034-f5157200-e0c3-11eb-91f5-66526d273b29.png)
+- #### _Reaction Added To User_
+  ![image](https://user-images.githubusercontent.com/79383305/125134174-3a39a400-e0c4-11eb-840f-e482e27a8bad.png)
