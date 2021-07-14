@@ -5,6 +5,7 @@ const userController = {
   getAllUser(req, res) {
     User.find({})
       .populate({ path: "thoughts", select: "-__v" })
+      .populate({ path: "friends", select: "-__v" })
       .select("-__v")
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => {
@@ -16,6 +17,7 @@ const userController = {
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .populate({ path: "thoughts", select: "-__v" })
+      .populate({ path: "friends", select: "-__v" })
       .select("-__v")
       .then((dbUserData) => {
         if (!dbUserData) {
@@ -57,11 +59,11 @@ const userController = {
       });
   },
   // POST route to add a friend to a user
-  addFriend({ params, body }, res) {
+  addFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
       { $push: { friends: params.friendId } },
-      { new: true, runValidators: true }
+      { new: true }
     )
       .select("-__v")
       .then((dbUserData) => {
@@ -77,7 +79,7 @@ const userController = {
   removeFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
-      { $pull: { friends: { friendId: params.friendId } } },
+      { $pull: { friends: params.friendId } },
       { new: true }
     )
       .then((dbUserData) => res.json(dbUserData))
