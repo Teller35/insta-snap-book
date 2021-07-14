@@ -4,6 +4,7 @@ const thoughtController = {
   // GET route for all thoughts
   allThought(req, res) {
     Thought.find({})
+      .select("-__v")
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => res.json(err));
   },
